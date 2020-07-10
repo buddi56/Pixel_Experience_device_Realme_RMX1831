@@ -21,8 +21,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common LOS stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
-# Inherit from oppo CPH1861
-$(call inherit-product, device/oppo/CPH1859/device.mk)
+# Inherit from realme RMX1831
+$(call inherit-product, device/realme/RMX1831/device.mk)
 
 # Define first api level
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
