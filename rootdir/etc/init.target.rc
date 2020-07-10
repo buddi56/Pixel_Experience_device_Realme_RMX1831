@@ -1,0 +1,117 @@
+    service charger /charger
+    class charger
+    group system shell input graphics
+    seclabel u:r:charger:s0
+
+ on early-init
+
+    on charger && property:ro.hardware=mt*
+    write /sys/class/leds/lcd-backlight/trigger "backlight"
+    write /sys/class/android_usb/android0/enable 1
+
+on init
+    # Force disable all VoLTE support -- it requires intensive modification of frameworks
+    # without framework support it creates all sorts of problems. Disable it.
+    setprop persist.vendor.mtk.volte.enable 0
+    setprop persist.vendor.mtk_ct_volte_support 0
+
+    # Disable mediatek lights, use custom ones from android.
+    mount none /dev/null vendor/lib/hw/lights.mt6771.so bind
+    mount none /dev/null vendor/lib64/hw/lights.mt6771.so bind
+    mount none /dev/null vendor/bin/hw/android.hardware.light@2.0-service-mediatek bind
+    mount none /dev/null vendor/etc/init/android.hardware.light@2.0-service-mediatek.rc bind
+    mount none /dev/null vendor/lib/hw/android.hardware.light@2.0-impl-mediatek.so bind
+    mount none /dev/null vendor/lib64/hw/android.hardware.light@2.0-impl-mediatek.so bind
+
+    # bind mount libmtk-ril.so
+    mount none /system/lib64/libmtk-ril.so /vendor/lib64/libmtk-ril.so bind
+
+service boot_lc /system/bin/logcat -b all -D -f /cache/boot_lc_full.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_crash /system/bin/logcat -b crash -D -f /cache/boot_lc_crash.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_kernel /system/bin/logcat -b kernel -D -f /cache/boot_lc_kernel.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+on fs
+
+    # debug boot process
+
+    rm /cache/boot_lc_full.txt
+    rm /cache/boot_lc_crash.txt
+    rm /cache/boot_lc_kernel.txt
+    start boot_lc
+    start boot_lc_kernel
+    start boot_lc_crash
+
+on post-fs
+	mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
+
+on post-fs-boot
+
+on property:sys.boot_completed=1
+    stop boot_lc
+    stop boot_lc_crash
+    stop boot_lc_kernel
+
+on property:dev.bootcomplete=1
+    stop boot_lc
+    stop boot_lc_crash
+    stop boot_lc_kernel
+
+on boot
+    # Touchscreen/DT2W
+    chown system system /proc/touchpanel/double_tap_enable
+    chown 0660 /proc/touchpanel/double_tap_enable
+    write /proc/touchpanel/double_tap_enable 1
+
+    # Disable edge limit control interface
+    chown system system /proc/touchpanel/oppo_tp_limit_enable
+    chown 0660 /proc/touchpanel/oppo_tp_limit_enable
+    write /proc/touchpanel/oppo_tp_limit_enable 0
+
+    # Enable oppo touchpanel direction
+    chown system system /proc/touchpanel/oppo_tp_direction
+    chown 0660 /proc/touchpanel/oppo_tp_direction
+    write /proc/touchpanel/oppo_tp_direction 1
+
+    # Update touchscreen firmware
+    chown system system /proc/touchpanel/tp_fw_update
+    chown 0660 /proc/touchpanel/tp_fw_update
+    write /proc/touchpanel/tp_fw_update 1
+
+    # LCD backlight
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/lcd-backlight/brightness
+
+    chown 0644 /proc/tfa98xx/oppo_tfa98xx_fw_update
+    chown system system /proc/tfa98xx/oppo_tfa98xx_fw_update
+    write /proc/tfa98xx/oppo_tfa98xx_fw_update 1
+
+    # OTG
+    write /sys/devices/platform/odm/odm:oppo_charger/power_supply/usb/otg_switch 1
+
+service set_zram /vendor/bin/sh /system/etc/init/set_zram.sh
+    class late_start
+    disabled
+    user root
+    group system
+    oneshot
+
+on property:sys.boot_completed=1
+    start set_zram
+

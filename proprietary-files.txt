@@ -1,0 +1,6 @@
+bin/kpoc_charger
+etc/init/kpoc_charger.rc
+lib/libshowlogo.so
+lib/libsysenv_system.so
+lib64/libsysenv_system.so
+vendor/lib64/libmtk-ril.so:lib64/libmtk-ril.so
