@@ -2,6 +2,35 @@
 
 The Realme U1 (codenames _"RMX1831"_ and _"RMX1833"_ ) is a mid-range smartphone from Realme, announced in November 2018.
 
+**Working**:
+
+1. Boots
+2. RIL(Calls,SMS,Data)
+3. Wi-Fi
+4. Bluetooth
+5. Camera
+6. Audio
+7. Sensors
+8. Flashlight
+9. Brightness
+10. GPS
+11. Gcam
+12. Hotspot
+13. USB Tethering
+14. DT2W
+15. Offline Charging
+
+**Not working**:
+
+1. Selinux is permissive.
+2. Video codec issues in all Chromium based browsers (minimal).
+3. VoLTE
+4. No face Unlock.
+
+## Downloads
+
+
+
 ## Device specifications
 
 Basic   | Spec Sheet
