@@ -29,8 +29,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-pe
 
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.secure_lock_screen.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.secure_lock_screen.xml \
@@ -56,10 +54,6 @@ PRODUCT_COPY_FILES += \
 # Input/DT2W
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl
-
-# zRam
-PRODUCT_PACKAGES += \
-    set_zram.sh
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
@@ -90,14 +84,6 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0_system
-
-#WiFi
-PRODUCT_PACKAGES += \
-    hostapd \
-    libwpa_client \
-    libwifi-hal \
-    wpa_supplicant \
-    wpa_supplicant.conf
 
 # KPOC
 PRODUCT_PACKAGES += \
