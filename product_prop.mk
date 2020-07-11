@@ -17,7 +17,7 @@
 
 # Pixel identification
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.build.fingerprint=google/coral/coral:10/QQ3A.200605.001/6392402:user/release-keys
+    ro.build.fingerprint=google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys
 
 # Camera
 PRODUCT_PRODUCT_PROPERTIES += \

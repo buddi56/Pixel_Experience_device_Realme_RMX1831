@@ -24,8 +24,9 @@ The Realme U1 (codenames _"RMX1831"_ and _"RMX1833"_ ) is a mid-range smartphone
 
 1. Selinux is permissive.
 2. Video codec issues in all Chromium based browsers (minimal).
-3. VoLTE
+3. VoLTE.
 4. No face Unlock.
+5. Inbuilt screen recorder
 
 ## Downloads
 
