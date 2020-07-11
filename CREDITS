@@ -16,3 +16,8 @@ Link: https://github.com/xiaomi-mt6765/android_device_xiaomi_mt6765-common/tree/
 
 Author: Realme/Oppo Dev team
 Link: Taken from stock dump
+
+5. Logger script:
+
+Author: Antoin O'Leary
+Link: https://github.com/aoleary/device_lge_g4-common/commit/073490b8a5056d5d59c2bea04d6648f423db3a35
