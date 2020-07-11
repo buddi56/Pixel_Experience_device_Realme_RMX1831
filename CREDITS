@@ -21,3 +21,8 @@ Link: Taken from stock dump
 
 Author: Antoin O'Leary
 Link: https://github.com/aoleary/device_lge_g4-common/commit/073490b8a5056d5d59c2bea04d6648f423db3a35
+
+6. oppo_tfa98xx_fw_update (speaker fix)
+
+Author: GSI community (main: Phhusson)
+Link: https://github.com/phhusson/treble_experimentations/issues/1139
