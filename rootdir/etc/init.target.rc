@@ -1,14 +1,3 @@
-    service charger /charger
-    class charger
-    group system shell input graphics
-    seclabel u:r:charger:s0
-
- on early-init
-
-    on charger && property:ro.hardware=mt*
-    write /sys/class/leds/lcd-backlight/trigger "backlight"
-    write /sys/class/android_usb/android0/enable 1
-
 on init
     # Force disable all VoLTE support -- it requires intensive modification of frameworks
     # without framework support it creates all sorts of problems. Disable it.
