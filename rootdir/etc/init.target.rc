@@ -16,7 +16,7 @@ on init
     mount none /system/lib64/libmtk-ril.so /vendor/lib64/libmtk-ril.so bind
 
 on post-fs
-	mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
+    mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
 
 on boot
     # Touchscreen/DT2W
@@ -43,12 +43,25 @@ on boot
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
 
-    chown 0644 /proc/tfa98xx/oppo_tfa98xx_fw_update
-    chown system system /proc/tfa98xx/oppo_tfa98xx_fw_update
+    #add for MTK tfa kernel driver
     write /proc/tfa98xx/oppo_tfa98xx_fw_update 1
+    chown system system /proc/tfa98xx/oppo_tfa98xx_fw_update
+    chmod 0660 /dev/i2c0_tfa9890
+    chown audiosever audio /dev/i2c0_tfa9890
 
     # OTG
     write /sys/devices/platform/odm/odm:oppo_charger/power_supply/usb/otg_switch 1
+
+    #Add for wakeup_stastisc reset
+    chown system system /sys/kernel/wakeup_reasons/wakeup_stastisc_reset
+    chown system system /sys/kernel/wakelock_profiler/active_max
+    chown system system /sys/kernel/wakelock_profiler/kernel_time
+
+    #Add for ship mode
+    chown system system /sys/class/power_supply/battery/ship_mode
+
+    #Add for current limit while calling
+    chmod  0666 /sys/class/power_supply/battery/call_mode
 
 service set_zram /vendor/bin/sh /system/etc/init/set_zram.sh
     class late_start
