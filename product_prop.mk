@@ -17,7 +17,7 @@
 
 # Pixel identification
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.build.fingerprint=google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys
+    ro.build.fingerprint=google/coral/coral:10/QQ3A.200805.001/6578210:user/release-keys
 
 # Camera
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -47,16 +47,3 @@ debug.composition.type=gpu
 # LCD density
 ro.sf.lcd_density=480
 
-# Granular Volume Steps
-ro.config.vc_call_vol_steps=7
-ro.config.alarm_vol_steps=15
-ro.config.system_vol_steps=15
-ro.config.ring_notification_vol_steps=15
-
-# Video Acceleration Enabled And HW debugging
-video.accelerate.hw=1
-debug.sf.hw=1
-debug.performance.tuning=1
-debug.egl.profiler=1 
-debug.egl.hw=1
-debug.composition.type=gpu
