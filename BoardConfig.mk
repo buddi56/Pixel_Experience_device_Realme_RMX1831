@@ -59,7 +59,7 @@ TARGET_SCREEN_WIDTH := 1080
 WITH_DEXPREOPT := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.configfs=true androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_HASH_TYPE := sha1

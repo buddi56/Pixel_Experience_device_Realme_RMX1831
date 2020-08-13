@@ -22,7 +22,10 @@ PRODUCT_PACKAGES += \
 USE_XML_AUDIO_POLICY_CONF := 1
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
+    $(LOCAL_PATH)/audio/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -88,7 +91,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsuspend
 
-# Symbols 
+# Symbols
 PRODUCT_PACKAGES += \
     libshim_showlogo
 
