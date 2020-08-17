@@ -1,4 +1,4 @@
-# Pixel Experience and Pixel Experience Plus
+# Pixel Experience Plus and EvolutionX
 
 The Realme U1 (codenames _"RMX1831"_ and _"RMX1833"_ ) is a mid-range smartphone from Realme, announced in November 2018.
 
@@ -30,7 +30,9 @@ The Realme U1 (codenames _"RMX1831"_ and _"RMX1833"_ ) is a mid-range smartphone
 
 ## Downloads
 
+https://sourceforge.net/projects/realmeu1/files/Pixel_Experience_Plus/
 
+https://sourceforge.net/projects/realmeu1/files/EvolutionX/
 
 ## Device specifications
 
@@ -55,7 +57,7 @@ Features| Fingerprint (rear-mounted), accelerometer, proximity, compass
 
 ![Realme U1](https://images-na.ssl-images-amazon.com/images/I/71G%2BlExqsrL._AC_SX679_.jpg "Realme U1")
 
-## Getting Started with Pixel Experience Plus ##
+## Getting Started with Pixel Experience Plus or EvolutionX##
 ---------------
 
 To get started with ROM compiling, you'll need to get
@@ -66,6 +68,10 @@ familiar with [Git and Repo](https://source.android.com/source/using-repo.html).
 To initialize your local repository using the Pixel Experience trees to build ROM, use a command like this:
 
     repo init -u https://github.com/PixelExperience/manifest -b ten-plus
+
+OR
+
+    repo init -u https://github.com/Evolution-X/manifest -b ten;
 
 # repo sync
 
